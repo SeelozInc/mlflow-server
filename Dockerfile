@@ -6,7 +6,7 @@ WORKDIR /mlflow/
 
 ARG MLFLOW_VERSION=1.2.0
 RUN mkdir -p /mlflow/ \
-  && apt-get -y install --no-install-recommends default-libmysqlclient-dev libpq-dev build-essential \
+  && apt-get update && apt-get -y install --no-install-recommends default-libmysqlclient-dev libpq-dev build-essential \
   && pip install \
     mlflow==$MLFLOW_VERSION \
     sqlalchemy \

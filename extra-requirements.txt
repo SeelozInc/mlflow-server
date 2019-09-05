@@ -1,4 +1,0 @@
-sqlalchemy
-psycopg2
-boto3
-google-cloud-storage

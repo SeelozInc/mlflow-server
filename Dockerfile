@@ -5,10 +5,13 @@ WORKDIR /mlflow/
 
 ARG MLFLOW_VERSION=1.2.0
 RUN mkdir -p /mlflow/ \
+  && apt-get -y install libmariadbclient-dev libpq-dev build-essential \
   && pip install mlflow==$MLFLOW_VERSION \
     sqlalchemy \
     boto3 \
-    google-cloud-storage
+    google-cloud-storage \
+    mysql \
+    psycopg2
 
 EXPOSE 5000
 

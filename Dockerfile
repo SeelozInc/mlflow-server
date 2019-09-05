@@ -1,3 +1,4 @@
+# FROM python:3.7.4-slim
 FROM continuumio/miniconda3:4.7.10
 LABEL maintainer="Syed Salman Qadri <syed.qadri@seeloz.com>"
 
@@ -5,13 +6,14 @@ WORKDIR /mlflow/
 
 ARG MLFLOW_VERSION=1.2.0
 RUN mkdir -p /mlflow/ \
-  && apt-get -y install libmariadbclient-dev libpq-dev build-essential \
-  && pip install mlflow==$MLFLOW_VERSION \
+  && apt-get -y install --no-install-recommends default-libmysqlclient-dev libpq-dev build-essential \
+  && pip install \
+    mlflow==$MLFLOW_VERSION \
     sqlalchemy \
     boto3 \
     google-cloud-storage \
-    mysql \
-    psycopg2
+    psycopg2 \
+    mysql
 
 EXPOSE 5000
 

@@ -104,20 +104,20 @@ Here is how you can deploy to Kubernetes on Google Cloud:
     * In Workfloads select your deployment and click Edit
     * Add the following to your spec/template/spec/containers section:
 
-```yaml
+    ```yaml
         volumeMounts:
         - mountPath: /var/secrets/google
           name: google-cloud-key
-```
+    ```
 
     * Add the following to the spec/template/spec section:
 
-```yaml
+    ```yaml
       volumes:
       - name: google-cloud-key
         secret:
           secretName: gcs-key
-```
+    ```
 
     * If you are using a PVC as your database backing, then you'll need to mount that here too at something like ```/mlflow/store```
 
